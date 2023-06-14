@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          script.bat
+          ./script.bat
 
       - name: Build app with PyInstaller
         run: |
