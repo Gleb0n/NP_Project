@@ -109,6 +109,9 @@ class ConverterApp(QMainWindow):
 
         print("Konwersja zakończona.")
 
+
+
+if __name__ == "__main__":
     def convert_data_async(input_file, output_file):
         with concurrent.futures.ThreadPoolExecutor() as executor:
             if input_file.endswith('.json'):
@@ -134,8 +137,6 @@ class ConverterApp(QMainWindow):
 
             print("Konwersja zakończona.")
 
-
-if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ConverterApp()
     window.convert_button.clicked.connect(lambda: convert_data_async(window.input_field.text(), window.output_field.text()))
