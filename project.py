@@ -5,15 +5,6 @@ import xml.etree.ElementTree as ET
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
 import concurrent.futures
-def parse_arguments():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('input_file', help='Ścieżka do pliku wejściowego')
-    parser.add_argument('output_file', help='Ścieżka do pliku wyjściowego')
-    args = parser.parse_args()
-    return args.input_file, args.output_file
-
-input_file, output_file = parse_arguments()
-
 def read_json_file(file_path):
     with open(file_path, 'r') as file:
         try:
@@ -109,6 +100,7 @@ class ConverterApp(QMainWindow):
 
         print("Konwersja zakończona.")
 
+if __name__ == "__main__":
     def convert_data_async(input_file, output_file):
         with concurrent.futures.ThreadPoolExecutor() as executor:
             if input_file.endswith('.json'):
@@ -134,8 +126,6 @@ class ConverterApp(QMainWindow):
 
             print("Konwersja zakończona.")
 
-
-if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = ConverterApp()
     window.convert_button.clicked.connect(lambda: convert_data_async(window.input_field.text(), window.output_field.text()))
