@@ -1,4 +1,4 @@
-#!/bin/bash
+@echo off
 pip install pyinstaller
 pip install json
 pip install pyyaml
